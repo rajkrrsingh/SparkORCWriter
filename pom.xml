@@ -26,15 +26,15 @@
     <artifactId>apache</artifactId>
     <version>14</version>
   </parent>
-  <groupId>com.hortonworks</groupId>
-  <artifactId>shc</artifactId>
+  <groupId>com.rajkrrsingh</groupId>
+  <artifactId>ssa</artifactId>
   <version>1.1.0-1.6-s_2.10-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>HBase Spark Connector</name>
+  <name>SampleSparkApp</name>
   <url>https://github.com/hortonworks-spark/shc</url>
 
   <properties>
-    <spark.version>1.6.1</spark.version>
+    <spark.version>1.6.0</spark.version>
     <hbase.version>1.1.2</hbase.version>
     <test_classpath_file>${project.build.directory}/spark-test-classpath.txt</test_classpath_file>
     <java.version>1.7</java.version>
@@ -98,70 +98,9 @@
       <version>${spark.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase-server</artifactId>
-      <version>${hbase.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>asm</groupId>
-          <artifactId>asm</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jboss.netty</groupId>
-          <artifactId>netty</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>io.netty</groupId>
-          <artifactId>netty</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jruby</groupId>
-          <artifactId>jruby-complete</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase-common</artifactId>
-      <version>${hbase.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>asm</groupId>
-          <artifactId>asm</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jboss.netty</groupId>
-          <artifactId>netty</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>io.netty</groupId>
-          <artifactId>netty</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>commons-logging</groupId>
-          <artifactId>commons-logging</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jruby</groupId>
-          <artifactId>jruby-complete</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.hbase</groupId>
-      <artifactId>hbase-testing-util</artifactId>
-      <type>test-jar</type>
-      <version>${hbase.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.avro</groupId>
-      <artifactId>avro</artifactId>
-      <version>${avro.version}</version>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-hive_${scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
     </dependency>
     <dependency>
       <groupId>org.scalatest</groupId>
@@ -174,15 +113,6 @@
   <build>
     <outputDirectory>target/scala-${scala.binary.version}/classes</outputDirectory>
     <testOutputDirectory>target/scala-${scala.binary.version}/test-classes</testOutputDirectory>
-    <resources>
-      <resource>
-        <directory>${basedir}/conf</directory>
-        <filtering>false</filtering>
-        <includes>
-          <include>hbase-site.xml</include>
-        </includes>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>net.alchim31.maven</groupId>
